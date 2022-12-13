@@ -31,7 +31,7 @@ def generate_table(dataframe, max_rows=10):
 app = dash.Dash(__name__, external_stylesheets=stylesheet)
 server = app.server
 
-df = pd.read_csv("./data/books2.csv")
+df = pd.read_csv("data/books2.csv")
 
 app = Dash(__name__)
 

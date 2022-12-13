@@ -31,7 +31,7 @@ for url in urls:
 book_urls = ['https://www.goodreads.com' + book_link_tag.get('href')
               for book_link_tag in book_link_tags]
 
-with open('book_urls.txt', 'w') as f:
+with open('data/book_urls.txt', 'w') as f:
     f.write("\n".join(book_urls))
 
 """
@@ -43,7 +43,7 @@ Part 2 save each book page to local
 n = 300
 
 # prepare the book urls
-with open('/Users/hieunguyen/Desktop/goodreads/book_urls.txt') as f:
+with open('data/book_urls.txt') as f:
     book_urls = f.readlines()
     book_urls = [book_url.strip() for book_url in book_urls]
 
@@ -58,7 +58,7 @@ for book_url in book_urls[:n]:
 
     book_page = requests.get(book_url, headers={"User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"})
     
-    with open('/Users/hieunguyen/Desktop/goodreads/books/' + book_url.split('/')[-1] + '.html', 'w') as f:
+    with open('data/books/' + book_url.split('/')[-1] + '.html', 'w') as f:
         f.write(book_page.text)
  
 
@@ -68,7 +68,7 @@ Part 3 scrape each book page from local
 
 df = pd.DataFrame()
 
-book_htmls = glob.glob('/Users/hieunguyen/Desktop/goodreads/books/*.html')
+book_htmls = glob.glob('data/books/*.html')
 #book_htmls = glob.glob('/Users/hieunguyen/Desktop/goodreads/books/4934.The_Brothers_Karamazov.html')
 
 for book_html in book_htmls:
@@ -104,4 +104,4 @@ for book_html in book_htmls:
         df.loc[book_id, 'num_reviews'] = book_soup.select('[data-testid="reviewsCount"]')[0].text.strip().split()[0]
     
 df.index.name = 'book_id'
-df.to_csv('/Users/hieunguyen/Desktop/goodreads/books2.csv', encoding='utf-8')
+df.to_csv('data/books2.csv', encoding='utf-8')
