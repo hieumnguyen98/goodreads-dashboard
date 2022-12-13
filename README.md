@@ -2,7 +2,7 @@
 
 This repository contains files used in the MA705 dashboard project.
 
-The final dashboard is deployed on Heroku [here](https://ma705bostonuniversities.herokuapp.com).
+The final dashboard is deployed on Heroku [here](https://goodreadsdashboard.herokuapp.com/).
 
 ## Dashboard Description
 
