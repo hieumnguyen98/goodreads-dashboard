@@ -27,7 +27,7 @@ def generate_table(dataframe, max_rows=10):
             ]) for i in range(min(len(dataframe), max_rows))
         ])
     ])
-    
+server = app.server    
 
 app = dash.Dash(__name__, external_stylesheets=stylesheet)
 server = app.server
